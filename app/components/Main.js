@@ -2,12 +2,22 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Link = ReactRouter.Link;
-var firebaseUtils = require('../utils/firebaseUtils');
+var firebase = require('firebase');
+//var firebaseUtils = require('../utils/firebaseUtils');
+
+var config = {
+      apiKey: "apiKey",
+      authDomain: "projectId.firebaseapp.com",
+      databaseURL: "https://databaseName.firebaseio.com",
+      storageBucket: "bucket.appspot.com",
+    };
+    //firebase.initializeApp(config);
+var ref = firebase.initializeApp(config);
 
 var Main = React.createClass({
   getInitialState: function(){
     return {
-      loggedIn: firebaseUtils.isLoggedIn()
+      loggedIn: ref.auth().currentUser
     }
   },
   handleLogout: function(loggedIn){
@@ -16,7 +26,7 @@ var Main = React.createClass({
     });
   },
   componentWillMount: function(){
-    firebaseUtils.onChange = this.handleLogout;
+    //firebaseUtils.onChange = this.handleLogout;
   },
   render: function(){
     var loginOrOut;
@@ -38,6 +48,7 @@ var Main = React.createClass({
             <ul className="nav navbar-nav pull-right">
               <li><Link to="/" className="navbar-brand"> Home </Link></li>
               <li><Link to="/dashboard" className="navbar-brand"> Dashboard </Link></li>
+              <li><Link to="/profile" className="navbar-brand"> Profile </Link></li>
               {register}
               {loginOrOut}
             </ul>

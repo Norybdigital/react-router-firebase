@@ -1,12 +1,6 @@
 var Firebase = require('firebase');
-var forge = "YOUR-URL-HERE";
-var ref = new Firebase(forge);
 var cachedUser = null;
 
-var addNewUserToFB = function(newUser){
-  var key = newUser.uid;
-  ref.child('user').child(key).set(newUser);
-};
 
 var genErrorMsg = function(e) {
   var message = ""
@@ -69,8 +63,18 @@ var genErrorMsg = function(e) {
   return message;
 }
 
+var config = {
+      apiKey: "apiKey",
+      authDomain: "projectId.firebaseapp.com",
+      databaseURL: "https://databaseName.firebaseio.com",
+      storageBucket: "bucket.appspot.com",
+    };
+    //firebase.initializeApp(config);
+//var ref = firebase.initializeApp(config);
+
 var firebaseUtils = {
-  createUser: function(user, cb) {
+  //firebaseRef : ref
+  /*createUser: function(user, cb) {
     ref.createUser(user, function(err) {
       if (err) {
         var message = genErrorMsg(err);
@@ -117,7 +121,7 @@ var firebaseUtils = {
     ref.unauth();
     cachedUser = null;
     this.onChange(false);
-  }
+  }*/
 };
 
 module.exports = firebaseUtils;

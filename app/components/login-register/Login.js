@@ -1,5 +1,15 @@
 var React = require('react');
-var firebaseUtils = require('../../utils/firebaseUtils');
+//var firebaseUtils = require('../../utils/firebaseUtils');
+
+var config = {
+      apiKey: "apiKey",
+      authDomain: "projectId.firebaseapp.com",
+      databaseURL: "https://databaseName.firebaseio.com",
+      storageBucket: "bucket.appspot.com",
+    };
+    //firebase.initializeApp(config);
+//var ref = firebase.initializeApp(config);
+
 
 var Login = React.createClass({
   contextTypes: {
@@ -11,10 +21,13 @@ var Login = React.createClass({
     }
   },
   handleSubmit: function(e){
-    e.preventDefault();
+    /*e.preventDefault();
     var email = this.refs.email.value;
     var pw = this.refs.pw.value;
-    firebaseUtils.loginWithPW({email: email, password: pw}, function(err){
+    ref.auth().signInWithEmailAndPassword(email, pw).catch(function(error) {
+      console.log("error:" + error.code + " " + error.message);
+    });*/
+    /*firebaseUtils.loginWithPW(email, password), function(err){
       if ( ! err ) {
         var location = this.props.location
         if (location.state && location.state.nextPathname) {
@@ -26,7 +39,7 @@ var Login = React.createClass({
         console.log("Login failed! ", err);
         this.setState({error: err});
       }
-    }.bind(this));
+    }.bind(this));*/
   },
   render: function(){
     var errors = this.state.error ? <p> {this.state.error} </p> : '';

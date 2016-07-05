@@ -1,9 +1,9 @@
 var React = require('react');
-var firebaseUtils = require('../../utils/firebaseUtils');
+//var firebaseUtils = require('../../utils/firebaseUtils');
 
 var Logout = React.createClass({
   componentDidMount: function () {
-    firebaseUtils.logout();
+  //  firebaseUtils.logout();
   },
 
   render: function () {

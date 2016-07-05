@@ -1,5 +1,5 @@
 var React = require('react');
-var firebaseUtils = require('../../utils/firebaseUtils');
+//var firebaseUtils = require('../../utils/firebaseUtils');
 
 var Register = React.createClass({
   contextTypes: {
@@ -14,13 +14,13 @@ var Register = React.createClass({
     e.preventDefault();
     var email = this.refs.email.value;
     var pw = this.refs.pw.value;
-    firebaseUtils.createUser({email: email, password: pw}, function(err){
+    /*firebaseUtils.createUser({email: email, password: pw}, function(err){
       if(! err ){
           this.context.router.replace('/');
       } else {
         this.setState({error: err});
       }
-    }.bind(this));
+    }.bind(this));*/
   },
   render: function(){
     var errors = this.state.error ? <p> {this.state.error} </p> : '';
